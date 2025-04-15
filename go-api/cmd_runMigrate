@@ -1,0 +1,3 @@
+migrate -path migrations -database "postgresql://packetspy:@p4ck3t1984@localhost:5432/paymentGateway?sslmode=disable" up
+
+migrate -path migrations -database "postgresql://packetspy:@p4ck3t1984@localhost:5432/paymentGateway?sslmode=disable" down

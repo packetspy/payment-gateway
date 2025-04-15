@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:17.4
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: 'packetspy'
+      POSTGRES_PASSWORD: '@p4ck3t1984'
+      POSTGRES_DB: 'paymentGateway'
+      POSTGRES_SSLMODE: 'disable'
+    ports:
+      - 5432:5432
+    volumes:
+      - gateway_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  gateway_data:
+
